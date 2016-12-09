@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = (String)  request.getParameter("username");
 		String password = (String)  request.getParameter("password");
+		response.setContentType("text/html");
 		
 		UserDAO userDAO = new UserDAO();
 		RequestDispatcher dispatcher;
