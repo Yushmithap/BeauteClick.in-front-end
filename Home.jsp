@@ -8,13 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hello world!</h1><br>
 
+
+<c:if test="${empty successMsg}">
 <a href="login" >Login</a><br>
 <a href="register">Register</a><br>
+</c:if>
 <hr>
-
+<c:if test="${not empty successMsg}">
+	${successMsg}
+</c:if>
 <c:if test="${showLoginPage}">
+<jsp:include page="login.jsp"></jsp:include>
+</c:if>
+<c:if test="${not empty errorMsg}">
+	${errorMsg}
 <jsp:include page="login.jsp"></jsp:include>
 </c:if>
 

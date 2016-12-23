@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>This is login page</h1><br>
-  ${msg}
+	
+ 
+  <form action="validate">
+   
+  	User Name: <input type="text" name="id"><br>
+  	Password: <input type="password" name="password"><br>
+  	<input type="submit" value="Login">
+  </form>
 </body>
 </html>
