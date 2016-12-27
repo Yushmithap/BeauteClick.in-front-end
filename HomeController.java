@@ -4,15 +4,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.shopgirl.dao.temp.UserDao;
+import com.niit.shopgirlbackend.daoimpl.UserDAOImpl;
+
+
+
 
 @Controller
 public class HomeController {
 
 	@RequestMapping("/")
-	public String homePage(){
-		System.out.println("Executing the code");
-		return "home";
+	public ModelAndView homePage(){
+		ModelAndView mv = new ModelAndView("home");
+		mv.addObject("homePage","true");
+		return mv;
 	}
 	
 	@RequestMapping("/login")
@@ -32,13 +36,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/validate")
-	public ModelAndView validate(@RequestParam("id") String id,@RequestParam("password") String pwd ){
+	public ModelAndView validate(@RequestParam("email") String mail,@RequestParam("password") String pwd){
 		System.out.println("In validate method");
-		System.out.println("id"+id);
+		System.out.println("email:"+mail);
 		System.out.println("password"+pwd);
 		ModelAndView mv = new ModelAndView("home");
-		UserDao userDao = new UserDao();
-		if(userDao.isValidCredentials(id, pwd)==true){
+		UserDAOImpl userDao = new UserDAOImpl();
+		if(userDao.isValidCredentials(mail, pwd)==true){
 			mv.addObject("successMsg","You are logged in successfully");
 		}
 		else{
@@ -46,6 +50,26 @@ public class HomeController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping("/cart")
+	public ModelAndView showCartPage(){
+		ModelAndView mv = new ModelAndView("home");
+		mv.addObject("msg","Your cart is Empty");
+		mv.addObject("showCartPage","true");
+		return mv;
+	}
+	
+	@RequestMapping("/buy")
+	public ModelAndView showBuyPage(){
+		ModelAndView mv = new ModelAndView("home");
+		mv.addObject("msg","Sorry you need to sign up to buy a product");
+		mv.addObject("showBuyPage","true");
+		return mv;
+	}
+	
+	
+	
+	
 	
 	
 }
