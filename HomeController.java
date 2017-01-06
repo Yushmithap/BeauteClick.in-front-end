@@ -1,16 +1,26 @@
 package com.niit.shopgirl.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.shopgirlbackend.dao.UserDAO;
 import com.niit.shopgirlbackend.daoimpl.UserDAOImpl;
+import com.niit.shopgirlbackend.model.User;
 
 
 
 
 @Controller
 public class HomeController {
+	
+	//Need to call methods of UserDAOImpl and User -- so autowired
+	@Autowired
+	UserDAO userDAO;
+	
+	@Autowired
+	User user;
 
 	@RequestMapping("/")
 	public ModelAndView homePage(){
@@ -36,13 +46,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/validate")
-	public ModelAndView validate(@RequestParam("email") String mail,@RequestParam("password") String pwd){
+	public ModelAndView validate(@RequestParam("id") String id,@RequestParam("password") String pwd){
 		System.out.println("In validate method");
-		System.out.println("email:"+mail);
+		System.out.println("User ID"+id);
 		System.out.println("password"+pwd);
 		ModelAndView mv = new ModelAndView("home");
-		UserDAOImpl userDao = new UserDAOImpl();
-		if(userDao.isValidCredentials(mail, pwd)==true){
+		
+		if(userDAO.validate(id, pwd)!= null){
 			mv.addObject("successMsg","You are logged in successfully");
 		}
 		else{
