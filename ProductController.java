@@ -43,9 +43,9 @@ public class ProductController {
 	@Autowired
 	private Supplier supplier;
 	
-	private String path = "resources/img/";
+	private String path = "webapp/img/";
 	
-	private MultipartFile file;
+	
 	
 	
 	@RequestMapping(value="/manageAllProducts",  method = RequestMethod.GET)
@@ -69,7 +69,7 @@ public class ProductController {
 		
 		product.setCategoryID(category.getId());
 		product.setSupplierID(supplier.getId());
-		product.setProductID(product.getProductID());
+		product.setProductID(com.niit.shopgirl.util.Util.removeComman(product.getProductID()));
 		productDAO.saveOrUpdate(product);
 		
 		FileUtil.upload(path, file, product.getProductID()+".jpg");
@@ -106,7 +106,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("manageProductGet/{productID}")
-	public ModelAndView getSelectedProduct(@PathVariable("productId") String productID, RedirectAttributes redirectAttributes){
+	public ModelAndView getSelectedProduct(@PathVariable("productID") String productID, RedirectAttributes redirectAttributes){
 		
 		log.debug("Start of the method: getSelectedProduct");
 		ModelAndView mv = new ModelAndView("redirect:/home");
@@ -115,6 +115,7 @@ public class ProductController {
 		return mv;
 		
 	}
+	
 	
 	
 	

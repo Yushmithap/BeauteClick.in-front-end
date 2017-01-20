@@ -6,7 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -82,6 +83,19 @@ public class HomeController {
 		log.debug("Ending of the method loginHere");
 		return mv;
 	}
+	
+	@RequestMapping("/home")
+	public String reDirectToHome(@ModelAttribute("selectedProduct") final Product selectedProduct, final Model model) {
+		log.debug("Starting of the method reDirectToHome");
+		model.addAttribute("selectedProduct", selectedProduct);
+		/*
+		 * model.addAttribute("categoryList", this.categoryDAO.list());
+		 * model.addAttribute("productList", this.productDAO.list());
+		 */
+		log.debug("Ending of the method reDirectToHome");
+		return "/home";
+	}
+
 
 	
 

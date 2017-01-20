@@ -56,15 +56,15 @@ div {
 	</div>
 	
 
-	
-		<table style="background-colour: lightpink;">
+	<c:if test="${empty loggedInUser}">
+		<table>
 			<tr>
 				<td><span class="glyphicon glyphicon-user"></span>
 				<a href="loginHere">LOGIN</a></td>
 				<td><a href="registerHere">SIGN UP</a></td>
 			</tr>
 		</table>
-	
+	</c:if>
 	
 
 
@@ -75,7 +75,7 @@ div {
 					
 						<table>
 							<tr>
-							<c:if test="${empty isAdmin}">
+							<c:if test="${isAdmin==false}">
 								<td><span class="glyphicon glyphicon-shopping-cart"></span><a
 									href="mycart">CART</a><i class="fa fa-shopping-cart">${cartSize}</i></td>
 									</c:if>
@@ -99,7 +99,9 @@ div {
 	</div>
 
 	<hr>
-	<div class="container">
+	
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
 
 		<ul class="nav nav-pills" role="tablist">
 			<c:forEach items="${categoryList}" var="category">
@@ -119,7 +121,7 @@ div {
 	</div>
 	<hr color="Blue" width="100" >
 	${category.products}
-
+</nav>
 
 </body>
 </html>

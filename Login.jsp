@@ -14,9 +14,8 @@
 <title>Insert title here</title>
 <style>
 body {
-	background-color: lightpink;
+
 	font-family: Verdana;
-	background-image: url("img/pain.jpg");
 	margin: auto;
 	text-decoration: none;
 	font-size: 18px;
@@ -48,8 +47,8 @@ h4 {
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-sm-offset-5">
-				<h4>Login to WatchableStock</h4>
-				<form action="validate" method="post">
+				<h4>Login to BeautyClick</h4>
+				<form action="validate" method="post" >
 					<div class="form-group">
 						<label for="id">User ID</label> <input type="text"
 							class="form-control" name="id" Placeholder="Your User ID">

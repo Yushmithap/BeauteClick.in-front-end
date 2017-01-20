@@ -13,7 +13,6 @@
 body {
 	
 	font-family: Verdana;
-	background-image: url("img/pain.jpg");
 	text-decoration: none;
 	font-size: 18px;
 }
@@ -43,31 +42,28 @@ h4{
  <div class="container">
  	<div class="row">
  		<div class="col-sm-12 col-sm-offset-5">
-  <h4>SignUp with WatchableStock</h4>
-  <form action="register" method="post">
+  <h4>SignUp with BeautyClick</h4>
+  <form action="register" method="post" >
   	<div class="form-group">
       <label for="id">User ID</label>
-      <input type="text" class="form-control" id="id" Placeholder="Your User ID">
+      <input type="text" class="form-control" name="id" Placeholder="Your User ID">
+    </div>
+    <div class="form-group">
+      <label for="name">User Name</label>
+      <input type="text" class="form-control" name="name" Placeholder="Your User Name">
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" class="form-control" id="email" Placeholder="Your Email Address">
+      <input type="text" class="form-control" name="email" Placeholder="Your Email Address">
     </div>
     <div class="form-group">
       <label for="pwd">Password</label>
-      <input type="password" class="form-control" id="password" Placeholder="Choose Password">
+      <input type="password" class="form-control" name="password" Placeholder="Choose Password">
     </div>
     <div class="form-group">
       <label for="pwd">Mobile</label>
-      <input type="text" class="form-control" id="mobile" Placeholder="Mobile Number(For order status updates)">
+      <input type="text" class="form-control" name="mobile" Placeholder="Mobile Number(For order status updates)">
     </div>
-    
-    <div class="radio-inline">
-    <input type="radio" value="Male">Male
-    </div>
-    <div class="radio-inline">
-    <input type="radio" value="Female">Female<br>
-    </div><br>
     <div class="button">
     <button type="submit" class="btn btn-default" style="font-size:18px;height:30px;">Register</button>
     </div>

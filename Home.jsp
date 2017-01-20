@@ -39,6 +39,10 @@
 	<c:if test="${homePage}">
 		<%@ include file="./carousel_images.jsp"%>
 	</c:if>
+	
+	<c:if test="${!empty selectedProduct}">
+		<%@ include file="./selectedProduct.jsp"%>
+	</c:if>
 
 
 	<c:if

@@ -61,7 +61,7 @@ private static Logger log = LoggerFactory.getLogger(CategoryController.class);
 		}
 		model.addAttribute("msg", msg);
 		log.debug("Ending of the method: removeSupplier");
-		return "forward:/manageMySupplier";
+		return "forward:/manageAllSuppliers";
 		
 	}
 	
@@ -72,7 +72,7 @@ private static Logger log = LoggerFactory.getLogger(CategoryController.class);
 		supplier = supplierDAO.get(id);
 		model.addAttribute("supplier", supplier);
 		log.debug("Ending of the method editSupplier");
-		return "forward:/manageMySupplier";
+		return "forward:/manageAllSuppliers";
 	}
 	
 	

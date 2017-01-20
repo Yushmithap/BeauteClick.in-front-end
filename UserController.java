@@ -1,6 +1,8 @@
 package com.niit.shopgirl.Controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -100,16 +102,37 @@ public class UserController{
 		public ModelAndView registerUser(@ModelAttribute User user) {
 			log.debug("Starting of the method registerUser");
 			ModelAndView mv = new ModelAndView("/home");
-			if (userDAO.get(user.getId()) == null) {
+			if (userDAO.get(user.getId()) == null)
+			{
 				user.setRole("ROLE_USER"); // all the users are end users by default
 				userDAO.saveOrUpdate(user);
+				System.out.println("I am in registration method");
 				log.debug("You are successfully register");
+				mv.addObject("newUserSaved", true);
 				mv.addObject("successMessage", "You are successfully registered");
 			} else {
 				log.debug("User exist with this id");
+			
 				mv.addObject("errorMessage", "User exist with this id");
 			}
 			log.debug("Ending of the method registerUser");
+			return mv;
+		}
+		
+		@RequestMapping("/logout")
+		public ModelAndView logout(HttpServletRequest request,HttpServletResponse response) {
+			log.debug("Starting of the method logout");
+			ModelAndView mv = new ModelAndView("/home");
+			session.invalidate(); // will remove the attributes which are added
+									// session
+			session = request.getSession(true);
+			session.setAttribute("category", category);
+			session.setAttribute("categoryList", categoryDAO.list());
+
+			mv.addObject("logoutMessage", "You successfully logged out");
+			mv.addObject("loggedOut", "true");
+			    
+			log.debug("Ending of the method logout");
 			return mv;
 		}
 

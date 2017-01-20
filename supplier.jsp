@@ -8,10 +8,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 ${msg}
-<h1>Add a Supplier</h1>
+<h1>Add Supplier</h1>
 
 	<c:url var="addAction" value="/manageSupplierAdd"></c:url>
 
@@ -57,15 +64,16 @@ ${msg}
 		</table>
 	</form:form>
 	<br>
+	<div class="container">
 	<h3>Supplier List</h3>
 	<c:if test="${!empty supplierList}">
-		<table class="tg">
+		<table class="table table-striped">
 			<tr>
-				<th width="80">Supplier ID</th>
-				<th width="120">Supplier Name</th>
-				<th width="120">Supplier Address</th>
-				<th width="60">Edit</th>
-				<th width="60">Delete</th>
+				<th>Supplier ID</th>
+				<th>Supplier Name</th>
+				<th>Supplier Address</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 			<c:forEach items="${supplierList}" var="supplier">
 				<tr>
@@ -78,5 +86,6 @@ ${msg}
 			</c:forEach>
 		</table>
 	</c:if>
+	</div>
 </body>
 </html>
