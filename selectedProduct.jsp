@@ -18,19 +18,38 @@
 </head>
 <body>
 
-<c:set var="imageFolder" value="webapp/img/" />
+<c:set var="imageFolder" value="C:\\Users\\Manisha\\Desktop\\BeautyClick\\ShopGirl\\src\\main\\webapp\\img\\" />
 <c:url   var="getAction" value='manageProductGet/${product.productID}' />
 	<form:form action="${getAction}" commandName="product">
 	<table>
 		<tr>
 			<td><img alt="${selectedProduct.name}"
 				src="${imageFolder}${selectedProduct.productID}.jpg"></td>
-			
-
 		</tr>
-
+		
 		<tr>
-			<td>Price : ${selectedProduct.price}</td>
+			<td> ${selectedProduct.name}</td>
+		</tr>
+		<tr>
+			<td>Product Code : ${selectedProduct.productID}</td>
+		</tr>
+		
+		<tr>
+			<td>Product Details : ${selectedProduct.description}</td>
+		</tr>
+		<tr>
+			<td>Price : Rs.${selectedProduct.price}</td>
+		</tr>
+		<tr>
+			<td>Size: ${selectedProduct.size}</td>
+		</tr>
+		<tr>
+			<td>Stock: ${selectedProduct.stock}</td>
+		</tr>
+		
+		<tr>
+			<td><a class="icon-shopping-cart"
+				href="myCartAdd/${selectedProduct.productID}">Add To Cart </a></td>
 		</tr>
 	
 	</table>
